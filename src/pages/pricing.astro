@@ -1,0 +1,36 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import AnnouncementBar from "../components/AnnouncementBar.astro";
+import Navbar from "../components/Navbar.astro";
+import Pricing from "../components/Pricing.astro";
+import CTASection from "../components/CTASection.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<MainLayout
+  title="FlowSpark Pricing"
+  description="Simple pricing for growing teams using FlowSpark."
+>
+  <AnnouncementBar />
+  <Navbar />
+  <main class="pt-8">
+    <section class="px-6 pb-8 pt-16 md:px-10 md:pt-24">
+      <div class="mx-auto max-w-4xl text-center reveal">
+        <p class="text-sm font-medium uppercase tracking-[0.2em] text-emerald-400">
+          Pricing
+        </p>
+        <h1 class="mt-4 text-4xl font-semibold tracking-tight md:text-6xl">
+          Simple plans for focused teams.
+        </h1>
+        <p class="mx-auto mt-6 max-w-2xl text-lg leading-8 text-neutral-300">
+          Start free, upgrade when you need more visibility, collaboration, and
+          momentum across your workflow.
+        </p>
+      </div>
+    </section>
+
+    <Pricing />
+    <CTASection />
+    <Footer />
+  </main>
+</MainLayout>

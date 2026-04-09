@@ -2,11 +2,11 @@
 import Logo from "./Logo.astro";
 
 const navLinks = [
-  { label: "Features", href: "#features" },
-  { label: "How It Works", href: "#how-it-works" },
-  { label: "Product", href: "#product-preview" },
-  { label: "Pricing", href: "#pricing" },
-  { label: "Testimonials", href: "#testimonials" },
+  { label: "Features", href: "/#features" },
+  { label: "How It Works", href: "/#how-it-works" },
+  { label: "Product", href: "/#product-preview" },
+  { label: "Pricing", href: "/pricing" },
+  { label: "Testimonials", href: "/#testimonials" },
 ];
 ---
 
@@ -26,51 +26,119 @@ const navLinks = [
 
     <div class="hidden items-center gap-3 md:flex">
       <a
-        href="#"
+        href="/pricing"
         class="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-white transition hover:bg-white/10"
       >
         Sign In
       </a>
+
       <a
-        href="#"
-        class="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-emerald-400 to-blue-400 px-6 py-3 text-sm font-semibold text-neutral-950 transition hover:scale-[1.02] hover:shadow-lg hover:shadow-emerald-500/30"
+        href="/pricing"
+        class="inline-flex rounded-full bg-gradient-to-r from-emerald-400 to-blue-400 px-4 py-2 text-sm font-semibold text-neutral-950 transition hover:scale-[1.02] hover:shadow-lg hover:shadow-emerald-500/30"
       >
         Start Free
       </a>
     </div>
 
-    <details class="relative md:hidden">
-      <summary class="flex cursor-pointer list-none items-center rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-white marker:content-none">
-        Menu
-      </summary>
+    <button
+      id="menu-toggle"
+      type="button"
+      class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white transition hover:bg-white/10 md:hidden"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+      aria-label="Open menu"
+    >
+      <svg
+        id="menu-open-icon"
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-5 w-5"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.8"
+        stroke-linecap="round"
+      >
+        <path d="M4 7h16" />
+        <path d="M4 12h16" />
+        <path d="M4 17h16" />
+      </svg>
 
-      <div class="absolute right-0 mt-3 w-64 rounded-2xl border border-white/10 bg-neutral-900/95 p-4 shadow-2xl shadow-black/40 backdrop-blur-xl">
-        <nav class="flex flex-col gap-2">
-          {navLinks.map((link) => (
-            <a
-              href={link.href}
-              class="rounded-xl px-3 py-2 text-sm text-neutral-300 transition hover:bg-white/5 hover:text-white"
-            >
-              {link.label}
-            </a>
-          ))}
-        </nav>
+      <svg
+        id="menu-close-icon"
+        xmlns="http://www.w3.org/2000/svg"
+        class="hidden h-5 w-5"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.8"
+        stroke-linecap="round"
+      >
+        <path d="M6 6l12 12" />
+        <path d="M18 6L6 18" />
+      </svg>
+    </button>
+  </div>
 
-        <div class="mt-4 grid gap-2 border-t border-white/10 pt-4">
-          <a
-            href="#"
-            class="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-center text-sm font-medium text-white transition hover:bg-white/10"
-          >
-            Sign In
-          </a>
-          <a
-            href="#"
-            class="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-emerald-400 to-blue-400 px-6 py-3 text-sm font-semibold text-neutral-950 transition hover:scale-[1.02] hover:shadow-lg hover:shadow-emerald-500/30"
-          >
-            Start Free
-          </a>
-        </div>
-      </div>
-    </details>
+  <div
+    id="mobile-menu"
+    class="hidden border-t border-white/10 bg-neutral-950/95 px-6 pb-6 pt-4 backdrop-blur-xl md:hidden"
+  >
+    <nav class="flex flex-col gap-2">
+      {navLinks.map((link) => (
+        <a
+          href={link.href}
+          class="rounded-2xl px-4 py-3 text-sm text-neutral-300 transition hover:bg-white/5 hover:text-white"
+        >
+          {link.label}
+        </a>
+      ))}
+    </nav>
+
+    <div class="mt-4 grid gap-3 border-t border-white/10 pt-4">
+      <a
+        href="/pricing"
+        class="rounded-full border border-white/10 bg-white/5 px-4 py-3 text-center text-sm font-medium text-white transition hover:bg-white/10"
+      >
+        Sign In
+      </a>
+
+      <a
+        href="/pricing"
+        class="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-emerald-400 to-blue-400 px-4 py-3 text-sm font-semibold text-neutral-950 transition hover:scale-[1.02] hover:shadow-lg hover:shadow-emerald-500/30"
+      >
+        Start Free
+      </a>
+    </div>
   </div>
 </header>
+
+<script>
+  const toggleButton = document.getElementById("menu-toggle");
+  const mobileMenu = document.getElementById("mobile-menu");
+  const openIcon = document.getElementById("menu-open-icon");
+  const closeIcon = document.getElementById("menu-close-icon");
+
+  if (toggleButton && mobileMenu && openIcon && closeIcon) {
+    toggleButton.addEventListener("click", () => {
+      const isOpen = !mobileMenu.classList.contains("hidden");
+
+      mobileMenu.classList.toggle("hidden");
+      openIcon.classList.toggle("hidden");
+      closeIcon.classList.toggle("hidden");
+
+      toggleButton.setAttribute("aria-expanded", String(!isOpen));
+      toggleButton.setAttribute("aria-label", isOpen ? "Open menu" : "Close menu");
+    });
+
+    const mobileLinks = mobileMenu.querySelectorAll("a");
+    mobileLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        mobileMenu.classList.add("hidden");
+        openIcon.classList.remove("hidden");
+        closeIcon.classList.add("hidden");
+        toggleButton.setAttribute("aria-expanded", "false");
+        toggleButton.setAttribute("aria-label", "Open menu");
+      });
+    });
+  }
+</script>
