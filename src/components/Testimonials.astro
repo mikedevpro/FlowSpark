@@ -1,0 +1,49 @@
+---
+const testimonials = [
+  {
+    quote:
+      "FlowSpark helped our team cut through the noise and focus on what actually mattered. Everything feels clearer now.",
+    name: "Maya Chen",
+    role: "Operations Lead",
+  },
+  {
+    quote:
+      "We replaced a messy mix of tools with one clean workflow. The difference in visibility was immediate.",
+    name: "Jordan Alvarez",
+    role: "Product Manager",
+  },
+  {
+    quote:
+      "The interface is simple, fast, and incredibly easy to adopt. Our team was up and running in a day.",
+    name: "Priya Thomas",
+    role: "Team Director",
+  },
+];
+---
+
+<section class="px-6 py-20 md:px-10">
+  <div class="mx-auto max-w-6xl">
+    <div class="max-w-2xl reveal">
+      <p class="text-sm font-medium uppercase tracking-[0.2em] text-emerald-400">
+        What teams are saying
+      </p>
+      <h2 class="mt-4 text-3xl font-semibold tracking-tight md:text-5xl">
+        Built to bring clarity back to the workday.
+      </h2>
+    </div>
+
+    <div class="mt-12 grid gap-6 md:grid-cols-3">
+      {testimonials.map((item, index) => (
+        <article class="rounded-3xl border border-white/10 bg-white/5 p-6"
+          style={`--delay: ${index * 120}ms;`}
+        >
+          <p class="text-lg leading-8 text-neutral-200">“{item.quote}”</p>
+          <div class="mt-6">
+            <p class="font-semibold text-white">{item.name}</p>
+            <p class="text-sm text-neutral-400">{item.role}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,44 @@
+---
+const steps = [
+  {
+    title: "Create your workspace",
+    body: "Set up projects, invite your team, and build a structure that fits the way you work.",
+  },
+  {
+    title: "Organize priorities",
+    body: "Break work into tasks, assign ownership, and map timelines without the usual clutter.",
+  },
+  {
+    title: "Track and ship",
+    body: "Monitor progress, remove blockers, and keep everyone aligned from kickoff to launch.",
+  },
+];
+---
+
+<section id="how-it-works" class="px-6 py-20 md:px-10">
+  <div class="mx-auto max-w-6xl">
+    <div class="max-w-2xl reveal">
+      <p class="text-sm font-medium uppercase tracking-[0.2em] text-emerald-400">
+        How it works
+      </p>
+      <h2 class="mt-4 text-3xl font-semibold tracking-tight md:text-5xl">
+        From scattered tasks to a clear system in three steps.
+      </h2>
+    </div>
+
+    <div class="mt-12 grid gap-6 md:grid-cols-3">
+      {steps.map((step, index) => (
+        <article
+          class="reveal rounded-3xl border border-white/10 bg-white/5 p-6"
+          style={`--delay: ${index * 120}ms;`}
+        >
+          <span class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-emerald-500 text-sm font-semibold text-neutral-950">
+            {index + 1}
+          </span>
+          <h3 class="mt-5 text-xl font-semibold">{step.title}</h3>
+          <p class="mt-3 leading-7 text-neutral-300">{step.body}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

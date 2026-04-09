@@ -1,0 +1,26 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "FlowSpark | Work faster without the chaos.",
+  description = "A premium SaaS landing page built with Astro and Tailwind.",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+  </head>
+  <body class="bg-neutral-950 text-white antialiased">
+    <slot />
+  </body>
+</html>

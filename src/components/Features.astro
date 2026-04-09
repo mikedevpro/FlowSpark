@@ -1,0 +1,50 @@
+---
+const features = [
+  {
+    title: "Smart project views",
+    body: "Switch between boards, timelines, and focused task lists to see the right work at the right time.",
+  },
+  {
+    title: "Real-time collaboration",
+    body: "Keep updates, comments, and progress in one shared workspace so everyone stays on the same page.",
+  },
+  {
+    title: "Clear progress tracking",
+    body: "See what’s moving, what’s blocked, and what needs attention with simple, actionable reporting.",
+  },
+  {
+    title: "Built for momentum",
+    body: "Reduce context switching and keep your team focused with workflows designed for speed and clarity.",
+  },
+];
+---
+
+<section id="features" class="px-6 py-20 md:px-10">
+  <div class="mx-auto max-w-6xl">
+    <div class="max-w-2xl reveal">
+      <p class="text-sm font-medium uppercase tracking-[0.2em] text-emerald-400">
+        Why teams choose FlowSpark
+      </p>
+      <h2 class="mt-4 text-3xl font-semibold tracking-tight md:text-5xl">
+        Everything you need to move work forward.
+      </h2>
+      <p class="mt-6 text-lg leading-8 text-neutral-300">
+        From planning to delivery, FlowSpark gives your team a simpler way to stay
+        aligned, reduce friction, and ship with confidence.
+      </p>
+    </div>
+
+    <div class="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+      {features.map((feature, index) => (
+        <article
+          class="reveal rounded-3xl border border-white/10 bg-white/5 p-6 transition hover:-translate-y-1 hover:bg-white/[0.07]"
+          style={`--delay: ${index * 120}ms;`}
+        >
+          <div class="mb-4 h-12 w-12 rounded-2xl bg-emerald-400/10 ring-1 ring-emerald-400/20"></div>
+          <h3 class="text-xl font-semibold text-white">{feature.title}</h3>
+          <p class="mt-3 leading-7 text-neutral-300">{feature.body}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
